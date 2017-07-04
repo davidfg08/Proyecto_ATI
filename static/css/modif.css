@@ -1,0 +1,138 @@
+/*       menu_modificar_playlist         */
+
+
+h3{
+	display: inline-block;
+	margin-right: 3%;
+	font-size: 130%;
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	color: #4B3030;
+	margin-bottom: 2%;
+	-webkit-text-stroke: 0.15px blue;
+	text-shadow: -0.15px -0.15px 0.15px #111
+}
+
+#Th{
+	display: inline-block;
+	font-size: 130%;
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	color: white;
+	margin-bottom: 2%;
+	-webkit-text-stroke: 0.15px blue;
+	text-shadow: -0.15px -0.15px 0.15px #111
+}
+
+#Tx{
+	display: inline-block;
+	font-size: 100%;
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	color: white;
+	margin-bottom: 2%;
+	-webkit-text-stroke: 0.15px blue;
+	text-shadow: -0.15px -0.15px 0.15px #111
+}
+
+
+#T3{
+	margin-top: 2%;
+}
+
+
+#canc-mod,#biblio {
+	border-top: 2px solid #000f1a;
+
+}
+
+
+#canc-mod ul ,#biblio ul {
+	margin-left:-40px; 
+}
+
+
+
+#canc-mod > ul > li ,#biblio > ul > li {
+	list-style-type: none;
+	padding: 5px;
+	color: #000f1a;
+	background-color: #d8d8da;
+	margin-top: 2px;
+}
+
+#canc-mod > ul > li:hover,#biblio > ul > li:hover {
+	background-color:#bdbdc1;
+}
+
+
+#canc-mod > ul > li >a,#biblio > ul > li >a {
+	text-decoration: none;
+}
+
+.x{
+	padding-left: 10px;
+	color: #000f1a;
+}
+	
+
+.x:hover{
+	color:#004a80; 
+}
+
+.InfoPlay{
+	margin-top:2%;
+}
+
+#falseinput {
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+  background-image: url("../imagenes/fondo.png");
+  color: white;
+  box-shadow: 2px 2px 5px #3D3E3F;
+}
+
+#falseinput:hover {
+	color: black;
+	border:1.5px solid #021a40;
+	background-image: url("../imagenes/fondo.gif");
+}
+
+
+#falseinput2 {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.42;
+  border-radius: 15px;
+  background-image: url("../imagenes/fondo.png");
+  color: white;
+  box-shadow: 2px 2px 5px #3D3E3F;
+}
+
+#falseinput2:hover {
+	color: black;
+	border:1.5px solid #021a40;
+	background-image: url("../imagenes/fondo.gif");
+}
+
+#SelecImg{
+	font-size: 110%;
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	display: inline-block;
+	color: #4B3030;
+	-webkit-text-stroke: 0.20px blue;
+	text-shadow: -0.4px -0.4px 0.4px #111
+}

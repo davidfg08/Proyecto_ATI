@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!--CSS-->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/style.css" />
+	    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/modif.css" />
+	    <!--CSS-->
+	    	<link rel="shortcut icon" href="../static/imagenes/icono.png">
+	   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<title>Editar Perfil - MyMusic</title>
+	</head>
+
+	<body>		
+				<nav class="navbar navbar-custom navbar-fixed-top">
+				<div class="container-fluid">
+					<div class="navbar-header">
+				      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>                        
+				      </button>
+				      <a class="navbar-brand" href="principal_usuario.html" ><span class="glyphicon glyphicon-headphones"></span> MyMusic</a>
+				    </div>
+				    <div class="collapse navbar-collapse" id="myNavbar" >
+				      <ul class="nav navbar-nav">
+				        <li ><a href="principal">Home</a></li>
+				         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-cd"></span> Mis Playlists  <span class="caret"></span></a>
+				        	 <ul class="dropdown-menu">
+				        		<li><a href="Playlist"><span class="glyphicon glyphicon-music"></span>  Crear</a></li>
+				        		<li><a href="mis_playlist"><span class="glyphicon glyphicon-pencil"></span>  Modificar</a></li>
+				        		<li><a href="mis_playlist_delete"><span class="glyphicon glyphicon-trash"></span>  Eliminar</a></li>
+				        	</ul>
+				        </li>
+				        <li><a href="Cancion"><span class="glyphicon glyphicon-music"></span>  Subir Canción</a></li>
+				      </ul>
+				      <div class="col-sm-3 col-md-3">
+				        <form class="navbar-form" role="search" action='/buscar' method="POST">
+				        <div class="input-group">
+				            <input type="text" class="form-control" placeholder="Buscar" name="Busqueda">
+				            <input id = "sesion" type="text" class="form-control" name="Tipo" value = "1" style="display:none;">
+				            <div class="input-group-btn">
+				                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+				            </div>
+				        </div>
+				        </form>
+				      </div>
+				      <ul class="nav navbar-nav navbar-right">
+				      	<li>
+							<img id="IPerfil-Nav" class="img-circle img-responsive" src="../static/imagenes/Perfiles/{{info["imagen"]}}" width="50px" height="50px"alt="Image">
+						</li>
+				      	<li class="active" class="dropdown"><a  href="#" class="dropdown-toggle" data-toggle="dropdown" href="#"> {{info["usuario"]}} <span class="caret"></span></a>
+				        	 <ul class="dropdown-menu">
+				        		<li><a href="Perfil"><span class="fa fa-eye"></span> Ver Perfil </a></li>
+				        		<li><a href="Pre_Perfil"><span class="glyphicon glyphicon-pencil"></span> Modificar</a></li>
+				        		<li><a href="/"><span class="glyphicon glyphicon-off"></span>  Salir</a></li>
+				        	</ul>
+				        </li>
+				      </ul>
+				    </div>
+				</div>
+			</nav>
+
+			<div id="Modal-Contra" class="modal fade" role="dialog">
+  				<div class="modal-dialog">
+    				<div class="modal-content">
+      					<div class="modal-header">
+        					<button type="button" class="close" data-dismiss="modal" title="Cerrar">&times;</button>
+        					<h4 class="text-center" id="titulo">Cambio de Contraseña</h4>
+      					</div>
+      					<div class="modal-body">
+        					<form method="POST" action="/New_Pass" enctype=multipart/form-data>
+        						<br>
+	        					<center>
+	        						<label class="text-center" id="tipotext"><h4><b> Nueva Contraseña:</b></h4></label>
+	        					</center>
+			        			<center>
+			          				<input  type="password" name="new1" class="campo-texto-i" placeholder="Contraseña" required></imput>
+								</center>
+	        					<br>
+	        					<center>
+	        						<label class="text-center" id="tipotext"><h4><b> Confirme su contraseña:</b></h4></label>
+	        					</center>
+			        			<center>
+			          				<input  type="password" name="new2" class="campo-texto-i" placeholder="Contraseña" required></imput>
+								</center>	
+	        					<br>
+	        					<a href="Pre_Perfil"  id="b-modal" class="btn" >Cancelar</a>
+	        					<button style ="float:right;" type="submit" id="b-cargar"class="btn">Guardar</button>
+	        				</form>	
+      					</div>
+    				</div>
+				</div>
+			</div>
+
+
+			<!--               Modal Nueva Foro de Perfil         -->
+
+			<div id="Modal-Foto" class="modal fade" role="dialog">
+  				<div class="modal-dialog">
+    				<div class="modal-content">
+      					<div class="modal-header">
+        					<button type="button" class="close" data-dismiss="modal" title="Cerrar">&times;</button>
+        					<h4 class="text-center" id="titulo">Cambiar Imagen de Perfil</h4>
+      					</div>
+      					<div class="modal-body">
+        					<form method="POST" action="/New_Pic" enctype=multipart/form-data>
+        						
+	        				<center>
+	        						
+								<img id="IPerfil" class="img-circle img-responsive" width="300" height="300" src="../static/imagenes/Perfiles/{{info["imagen"]}}" alt="Image">
+								
+								<input id="fileinput" type="file" name="imagen"></imput>
+						  		<p id = "SelecImg">Selecciona una imagen de perfil</p>
+						  		<button type="button" id="falseinput"><i class="fa fa-file-image-o"></i></button>
+
+
+	        				</center>
+
+
+	        					<a href="Pre_Perfil"  id="b-modal" class="btn" >Cancelar</a>
+	        					<button style ="float:right;" type="submit" id="b-cargar"class="btn">Guardar</button>
+	        				</form>	
+      					</div>
+    				</div>
+				</div>
+			</div>
+
+			    <script>
+ 						$('#fileinput').hide();
+        				$('#falseinput').on('click', function () {
+              				$('#fileinput').click();
+        				});
+
+       					$('#fileinput').change(function () {
+            			var tmppath = URL.createObjectURL(event.target.files[0]);
+            			$("#IPerfil").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]));
+        				});
+ 
+				</script>
+
+			<center>
+		  		<img id="IPerfil" class="img-circle img-responsive" width="300" height="300" src="../static/imagenes/Perfiles/{{info["imagen"]}}" alt="Image">
+ 
+		  		<div id = "Editar"><a data-toggle="modal" data-target="#Modal-Foto" href="#"><span class="glyphicon glyphicon-pencil"></span> Cambiar Imagen de Perfil</a></div>
+		  	
+				
+		  	</center>
+		  <div class="container" id="VentanaU">
+		  
+				<div class="row">
+				  	<!--Inicio de formulario-->	
+   		<form method="POST" action="/Editar_Perfil" class="Cambio" enctype=multipart/form-data>	
+				  <div class="col-sm-6">
+				    <div class="row mgbt-xs-0">
+				      <label class="col-xs-5 control-label">Nombre:</label>
+				      <div class="col-xs-7 controls">
+				      	<input  style="width : 100%; border-radius: 1% 1% 1% 1%;" name="nombre" type="text" class="campo-texto-i" value="{{info["name"]}}" required></imput>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="col-sm-6">
+				    <div class="row mgbt-xs-0">
+				      <label class="col-xs-5 control-label">Apellido:</label>
+				      <div class="col-xs-7 controls">
+				      	<input  style="width : 100%; border-radius: 1% 1% 1% 1%;" name="apellido" type="text" class="campo-texto-i" value="{{info["apellido"]}}"></imput>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="col-sm-6">
+				    <div class="row mgbt-xs-0">
+				      <label class="col-xs-5 control-label">Nombre de Usuario:</label>
+				      <div class="col-xs-7 controls">
+				      	<input  style="width : 100%; border-radius: 1% 1% 1% 1%;" name="user" type="text" class="campo-texto-i" value="{{info["usuario"]}}" required></imput>
+				      </div> 
+				    </div>
+				  </div>
+				  <div class="col-sm-6">
+				    <div class="row mgbt-xs-0">
+				      <label class="col-xs-5 control-label">Correo:</label>
+				      <div class="col-xs-7 controls">
+				      	<input  style="width : 100%; border-radius: 1% 1% 1% 1%;" name="correo" type="email" class="campo-texto-i" value="{{info["correo"]}}" required></imput>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="col-sm-6">
+				    <div class="row mgbt-xs-0">
+				      <label class="col-xs-5 control-label">Ciudad:</label>
+				      <div class="col-xs-7 controls">
+				      	<input  style="width : 100%; border-radius: 1% 1% 1% 1%;" name="ciudad" type="text" class="campo-texto-i" value="{{info["ciudad"]}}"></imput>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="col-sm-6">
+				    <div class="row mgbt-xs-0">
+				      <label class="col-xs-5 control-label">País:</label>
+				      <div class="col-xs-7 controls">
+				      	<input  style="width : 100%; border-radius: 1% 1% 1% 1%;" name="pais" type="text" class="campo-texto-i" value="{{info["pais"]}}"></imput>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="col-sm-6">
+				    <div class="row mgbt-xs-0">
+				      <label class="col-xs-5 control-label">Fecha de Nacimiento:</label>
+				      <div class="col-xs-7 controls">
+				      	<input  style="width : 100%; border-radius: 1% 1% 1% 1%;" name="nacimiento" type="date" class="campo-texto-i" value="{{info["nacimiento"]}}"></imput>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="col-sm-6">
+				    <div class="row mgbt-xs-0">
+				      <label class="col-xs-5 control-label">Intereses:</label>
+				      <div class="col-xs-7 controls">
+				      	<input  style="width : 100%; border-radius: 1% 1% 1% 1%;" name="interes" type="text" class="campo-texto-i" value="{{info["intereses"]}}"></imput>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="col-sm-6">
+				    <div class="row mgbt-xs-0">
+				      <label class="col-xs-5 control-label">Contraseña:</label>
+				      <div ><a data-toggle="modal" data-target="#Modal-Contra" href="#"><span class="glyphicon glyphicon-pencil"></span>  Cambiar Contraseña</a></div>
+				    </div>
+				  </div>
+				
+				</div>
+				<a href="Perfil" style ="float:left; margin-top:2%; margin-bottom:2%;"  id="b-cargar"class="btn">Cancelar</a>
+				 <button style ="float:right; margin-top:2%; margin-bottom:2%;" type="submit" id="b-cargar"class="btn">Guardar</button>
+			</div>
+		</div>
+	</form>
+
+	</body>
+	<footer id="foot" class="container-fluid text-center">
+		<strong>Síguenos en</strong><br>
+      	<i class="fa fa-facebook-square fa-2x"></i>
+      	<i class="fa fa-twitter-square fa-2x"></i>
+      	<i class="fa fa-instagram fa-2x"></i><br>
+	</footer>
+</html>
