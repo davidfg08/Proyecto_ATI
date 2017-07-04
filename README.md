@@ -2,7 +2,7 @@
 
 Proyecto de la materia Aplicaciones con Tecnología de Internet en Python Flask y con DB MongoDB
 
-Escenario
+
 El Grupo Docente de ATI (GDATI) ha establecido como mecanismo de evaluación
 un proyecto práctico alineado con los objetivos de la materia. Entre los objetivos de
 la materia se encuentra que, al finalizar el los estudiantes deben estar en capacidad
